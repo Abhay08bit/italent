@@ -1,0 +1,62 @@
+For Macos-
+> Issue the following from the terminal to tap the official MongoDB Homebrew Tap
+brew tap mongodb/brew
+
+> to install MongoDB Community Edition
+brew install mongodb-community@4.2
+
+>To run MongoDB (i.e. the mongod process) as a macOS service,
+brew services start mongodb-community@4.2
+
+>To stop a mongod running as a macOS service
+brew services stop mongodb-community@4.2
+
+> To run MongoDB (i.e. the mongod process) manually as a background process,
+>mongod --config /usr/local/etc/mongod.conf --fork
+
+> To verify that MongoDB is running, search for mongod in your running processes:
+ps aux | grep -v grep | grep mongod
+
+> To begin using MongoDB, connect a mongo shell to the running instance. From a new terminal, issue the following:
+
+mongo
+
+> TO store some data in collection-
+db.eaas.insertMany([{
+  "Name":"Manmohan Kumar", "id": "1231", "ext_platform": "UpWork", "per_hr_charge": 15, "unit": "$",  "exp":6, "designation":"Software Developer", "skills":"Java, MySql,Hybernet,Spring","e_mail": "abc@gmail.com","phone": 9000012345},
+{
+  "Name":"Pawan Warade", "id": "1232", "ext_platform": "Freelancer", "per_hr_charge": 10, "unit": "$",  "exp":5, "designation":"Sr. Software Developer", "skills":"Micro service, Python , Flask, Mongo DB","e_mail": "abc@gmail.com","phone": 9000012345},
+{
+  "Name":"Chetan Kumar", "id": "1233", "ext_platform": "UpWork", "per_hr_charge": 12, "unit": "$",  "exp":7, "designation":"Sr. Software Developer", "skills":"ava, MySql,Hybernet,Spring, MVC","e_mail": "abc@gmail.com","phone": 9000012345}])
+
+
+For Windows-
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows-unattended/
+
+Mongo Dump and Restore-
+===========================
+
+mongodump  --db A --collection coll --out yourbackupdir
+
+and then import the collections using mongorestore:
+
+mongorestore --db B --collection coll yourbackupdir/
+
+To insert a new field in all document-
+db.getCollection('iTalentHub').update({}, { $set: {"Nickname": ""} }, false, true)
+
+to delete-
+db.getCollection('iTalentHub').update({}, {$unset: {test: ""}})
+
+To update-
+db.getCollection('iTalentHub').update({"E_mail" : "Ankit.sethi54@outlook.com"},{$set: { "Nickname" : "sethhi"}});
+
+To Rename-
+db.yourCollectionName.update({}, {$rename: {'yourOldColumName': 'yourNewColumnName'}}, false, true);
+eg- db.getCollection('iTalentHub').update({}, {$rename: {'rating': 'Rating'}}, false, true)
+
+To Import all the data-
+mongoimport --db eaas --collection iTalentHub --type json --file Sheet1.json --jsonArray
+
+Mongo DB query in python for multiple condition-
+query = {search_key: {'$regex': '.*' + value + '.*'}, "Exp": {"$gt" : 1.0}, "Exp": {"$lt" : 7.0}}

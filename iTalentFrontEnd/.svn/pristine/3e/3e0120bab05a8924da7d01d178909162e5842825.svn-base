@@ -1,0 +1,82 @@
+import React from 'react';
+import BGimage from '../../assets/images/image.png';
+import { withRouter } from 'react-router-dom';
+import localforage from 'localforage';
+import ProgressBar from 'react-percent-bar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+//import IBarChart from '../common/chart/iBarChart';
+
+class Home extends React.Component {
+
+    state = {
+        isLogin: false,
+        profilePer: 0,
+        isAdmin: false
+    }
+
+    getStarted = () => {
+        this.props.history.push("/find-talent");
+    }
+
+    gotoProfile = () => {
+        this.props.history.push("/update-profile");
+    }
+
+    async componentDidMount() {
+        let isLogin = await localforage.getItem("isLoggedin");
+        let user = await localforage.getItem('user')
+
+        if (isLogin) {
+            let profilePer = await localforage.getItem("completePercentage");
+            this.setState({
+                isLogin,
+                profilePer,
+                isAdmin: user!=null && user["isAdmin"]?user["isAdmin"]:false
+            });
+        }
+    }
+
+    findJob = () => {
+        const pro = this.state.profilePer;
+        if (pro >= 100) {
+            toast.success("We will match a perfect requirement and get back to you.");
+        } else {
+            toast.error("Please complete your profile to proceed further.");
+        }
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <ToastContainer />
+                <div className="shape"></div>
+                <div className="row ">
+                    <div className="col-12 col-xl-5 col-lg-5 col-md-5">
+                        <div className="section_details_padding">
+                            <div className="looking-for-a-project">{!this.state.isLogin || (this.state.isLogin && this.state.isAdmin) ? "Looking for a part-time or project based talent?" : `Your profile is ${this.state.profilePer}% completed.`}</div>
+                            {!this.state.isLogin || (this.state.isLogin && this.state.isAdmin)  && <div className="work-with-the-best-freelance">Work with the best freelance talent from around the world on our secure,
+                                flexible and cost-effective platform.</div>}
+                            {this.state.isLogin && !this.state.isAdmin && <ProgressBar colorShift={false} borderColor="black" fillColor="#ff6158" percent={this.state.profilePer} />}
+                        </div>
+                        {!this.state.isLogin || (this.state.isLogin && this.state.isAdmin) && <div><button className="btn btn-primary btn-orange-color my-2 my-sm-0 get_started" onClick={this.getStarted} type="button">Get Started</button><button className="btn btn-primary btn-orange-color my-2 my-sm-0 get_started" style={{ marginLeft: "10px" }} onClick={() => { this.props.history.push("/analytics") }} type="button">Analytics</button></div>}
+                        {this.state.isLogin && !this.state.isAdmin && <div style={{ marginTop: "20px" }}><button className="btn btn-primary btn-orange-color my-2 my-sm-0 get_started" onClick={this.findJob} type="button">Find job for me</button><button style={{ marginLeft: "20px" }} className="btn btn-primary btn-orange-color my-2 my-sm-0 get_started" onClick={this.gotoProfile} type="button">Update profile</button></div>}
+                    </div>
+                    <div className="col-12 col-xl-7 col-lg-7 col-md-7">
+                        <div className="section_outer_div">
+                            <div className="section_right_image">
+                                <img src={BGimage} alt="bg" className="img-fluid" />
+                            </div>
+                            <div className="chart_image">
+                                {/* <img src ="images/chart.png" className="img-fluid" /> */}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </React.Fragment>
+        )
+    }
+}
+
+export default withRouter(Home);

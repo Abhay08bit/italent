@@ -1,0 +1,58 @@
+{
+  "_from": "react-percent-bar@0.0.2",
+  "_id": "react-percent-bar@0.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-Lu9R84PNupylUsk1fHZM37AA4KI8jSs9JFQqq2x60lWZwjTjIJ6hOtYKmunm8CHLj7GRcT5+v44kUkfIAl89yw==",
+  "_location": "/react-percent-bar",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-percent-bar@0.0.2",
+    "name": "react-percent-bar",
+    "escapedName": "react-percent-bar",
+    "rawSpec": "0.0.2",
+    "saveSpec": null,
+    "fetchSpec": "0.0.2"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-percent-bar/-/react-percent-bar-0.0.2.tgz",
+  "_shasum": "7f920e7c31c66e2a8d314b85a03ba6a070ab58ab",
+  "_spec": "react-percent-bar@0.0.2",
+  "_where": "C:\\iTH_react\\italenthub",
+  "author": {
+    "name": "Grant Glidewell",
+    "email": "hello@grantglidewell.com"
+  },
+  "bugs": {
+    "url": "https://github.com/grantglidewell/react-progress/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "react progress bar component",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "homepage": "https://github.com/grantglidewell/react-progress#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "react-percent-bar",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/grantglidewell/react-progress.git"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "prepublishOnly": "yarn build",
+    "start": "webpack --watch --mode development"
+  },
+  "version": "0.0.2"
+}

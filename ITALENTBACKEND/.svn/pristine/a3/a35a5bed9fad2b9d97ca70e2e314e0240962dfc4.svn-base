@@ -1,0 +1,192 @@
+Search Query Request Payload-
+=================================================
+url- http://0.0.0.0:5003/eaas/v1/api
+Content-Type : application/json
+Payload - Below,
+
+For ALL-
+{
+	"search_key":"all"
+}
+
+or
+
+{
+	"query":"all",
+    "search_key": "Primary Skills",
+    "value": ["Python"]
+}
+
+curl --header "Content-Type: application/json" -d "{\"text\":\"all\"}" http://0.0.0.0:5003/eaas/v1/api
+
+Multiple key and value......(Done)
+=================================================
+url- http://0.0.0.0:5003/eaas/mrs/v1/api
+Content-Type : application/json
+{"param" : [{"search_key": "Designation", "value": "Java Developer", "count": 1},
+ {"search_key": "Designation", "value": "Developer", "count": 1}] }
+
+
+
+To Register a new profile-
+=================================================
+url - http://0.0.0.0:5003/eaas/reg/v1/api
+Content-Type : application/json
+
+Payload-
+{
+    "query": {"Name": "Chitra", "DOB": "1991/12/18", "Age": "29", "Location": "India", "Gender": "Female", "Ext_Platform": "", "Exp": 5, "Designation": "Python",
+    "Primary Skills": "Python", "Secondary Skills": "", "E_mail": "chithra@gmail.com", "Per_hr_charge": 1, "unit": "", "Phone": "7596893239", "Education": "B-Tech", "JpSkills": "", "JpLevel": "", "JpCertification": "N-0", "EngSkills": "", "EngLevel": "", "EngCertification": ""}
+}
+
+===============================================
+Login API-
+url- http://0.0.0.0:5003/eaas/login/v1/api
+Content-Type : application/json
+payload-
+{
+    "E_mail": "abhinavgarg5@gmail.com",
+    "Pswd": "12345"
+}
+
+Response-
+{'data': {'_id': ObjectId('5f3e078a745097495ee177f6'), 'Name': 'Abhinav Garg', 'DOB': '1992/05/05', 'Age': '28',
+'Location': 'India', 'Gender': 'Male', 'Ext_Platform': '', 'Exp': 5.11, 'Designation': 'Block Chain', 'Primary Skills':
+'Block chain', 'Secondary Skills': '', 'E_mail': 'abhinavgarg5@gmail.com', 'Per_hr_charge': 0, 'Unit': '', 'Phone':
+'8393842159', 'Education': 'Diploma', 'JpSkills': '', 'JpLevel': '', 'JpCertification': 'N-0', 'EngSkills': '',
+'EngLevel': '', 'EngCertification': '', 'Pswd': '12345'}, 'status': True, 'isCompleted': True, 'completePercentage':
+80.0}
+========================================================
+API skill collection-
+http://0.0.0.0:5003/eaas/skill_collection/v1/api
+Content-Type : application/json
+Method- POST
+
+Payload-
+{"skills": ["Developer", "Consultant", "QA", "UI"]}
+
+response-
+[[{'_id': ObjectId('5f4394656134d85ef157f9eb'), 'Name': 'Amrutesh', 'DOB': '1993/12/07', 'Age': '26',
+'Location': 'India', 'Gender': 'Male', 'Ext_Platform': '', 'Exp': 1.0, 'Designation': 'SAP Consultant', 'Primary
+Skills': 'ABAP', 'Secondary Skills': '', 'E_mail': 'amruthesh10@gmail.com', 'Per_hr_charge': 0.0, 'Unit': '', 'Phone':
+'9789039304', 'Education': 'BE', 'JpSkills': '', 'JpLevel': '', 'JpCertification': 'N-3', 'EngSkills': 'Yes',
+'EngLevel': '', 'EngCertification': '', 'Pswd': '12345', 'Nickname': ''}, {'_id': ObjectId('5f4396896134d85ef157f9ee'),
+'Name': 'Ankit Sethi', 'DOB': '1990/08/06', 'Age': '30', 'Location': 'India', 'Gender': 'Male', 'Ext_Platform': '',
+'Exp': 6.0, 'Designation': 'Technical Consultant', 'Primary Skills': 'ASP.net,C++', 'Secondary Skills': '', 'E_mail':
+'Ankit.sethi54@outlook.com', 'Per_hr_charge': 0.0, 'Unit': '', 'Phone': '6583432923', 'Education': 'MSC', 'JpSkills':
+'', 'JpLevel': '', 'JpCertification': 'N-3', 'EngSkills': 'Yes', 'EngLevel': '', 'EngCertification': '', 'Pswd':
+'12345', 'Nickname': ''}, {'_id': ObjectId('5f533362745097495ee22cf8'), 'Name': 'Anoop Vishwanathan', 'DOB':
+'1990/01/16', 'Age': '30', 'Location': 'India', 'Gender': 'Male', 'Ext_Platform': '', 'Exp': '6.8', 'Designation': 'SAP
+Consultant', 'Primary Skills': 'SAP ABAP', 'Secondary Skills': '', 'E_mail': 'anoop.vishwa2@gmail.com', 'Per_hr_charge':
+0.0, 'Unit': '', 'Phone': '8586082161', 'Education': 'BE', 'JpSkills': '', 'JpLevel': '', 'JpCertification': 'N-0',
+'EngSkills': 'Yes', 'EngLevel': '', 'EngCertification': '', 'Pswd': '12345', 'Nickname': ''}], [], []]
+
+==========================
+Update_profile API-
+http://0.0.0.0:5003/eaas/reg_update/v1/api
+Payload-
+{
+    "E_mail": "er.aakashrathor@gmail.com",
+    "data": {"Nickname": "akaash", "Unit": "$"}
+}
+
+response- success
+
+=============================================
+URL- http://0.0.0.0:5003/eaas/contact/v1/api
+Payload-
+{
+
+    "candidate_detail" : [
+        {
+            "email" : "Akaash@gmail.com"
+        }
+    ],
+    "employer_detail" : {
+        "Name" : "smit",
+        "Email" : "raval@gmail.com",
+        "Company" : "Indosakura_freelance"
+    }
+}
+
+Response- {"status": true, "data": "We will contact you immediately"}
+
+==================================================
+
+URL - http://0.0.0.0:5003/eaas/contact_us/v1/api
+Payload-
+{"Name":"Manmohan Kumar", "Email":"er.aakashrathor@gmail.com", "Message": "Testing this API.."}
+
+==================================================
+URL - http://0.0.0.0:5003/eaas/analytics/v1/api
+
+Response-
+{"status": true, "data": {"total_count": 665, "skills": {"python": 80, "data science": 7, "java": 237, "html": 5,
+"testing": 22, "sales": 5, "net": 74, "japanese": 5, "SAP": 55}, "sought_skills": {"java": 237, "python": 80, "net": 74,
+"SAP": 55, "testing": 22}}}
+
+==================================================
+http://0.0.0.0:5003/eaas/mrs/v1/api
+request-
+{"param" : [{"search_key": "Primary Skills", "value": "Java", "count": 1, "Exp": "1-3"}, {"search_key": "Primary Skills", "value": "Python", "count": 1, "Exp": "1-3"}] }
+
+Response-
+{"team1": {"status": true, "data1": [[{"Name": "Anurag Srivatsava", "DOB": "1994/01/26", "Age": "26", "Location":
+"India", "Gender": "Male", "Ext_Platform": "", "Exp": "2.10", "Designation": "Java Developer", "Primary Skills":
+"Java,Spring Boot", "Secondary Skills": "", "E_mail": "srivastava.anurag2694@gmail.com", "Per_hr_charge": 0.0, "Unit":
+"", "Phone": "9110601864", "Education": "B-Tech", "JpSkills": "", "JpLevel": "", "JpCertification": "N-0", "EngSkills":
+"Yes", "EngLevel": "", "EngCertification": "", "Nickname": "", "Rating": 3.0}], [{"Name": "[1163] - Oguzhan Selik",
+"DOB": 34079.0, "Age": 27.0, "Location": "India", "Gender": "Male", "Ext_Platform": "Onsite", "Exp": 2.0, "Designation":
+"Bilingual Engineer", "Primary Skills": "Python", "Secondary Skills": "", "E_mail": "Oguzhanselik420@gmail.com",
+"Per_hr_charge": "", "Unit": "", "Phone": 905375701444.0, "Education": "BBA", "JpSkills": "", "JpLevel": "",
+"JpCertification": "N-2", "EngSkills": "", "EngLevel": "", "EngCertification": "", "\ufeffNickname": "", "Rating":
+3.0}]]}, "team2": {"status": true, "data2": [[{"Name": "Aparna jaiswal", "DOB": "1991/08/28", "Age": "29", "Location":
+"India", "Gender": "Female", "Ext_Platform": "", "Exp": "1", "Designation": "Java Developer", "Primary Skills":
+"Java,.Net,C++", "Secondary Skills": "", "E_mail": "aparna.jaiswal13@gmail.com", "Per_hr_charge": 0.0, "Unit": "",
+"Phone": "8092935233", "Education": "", "JpSkills": "", "JpLevel": "", "JpCertification": "N-4", "EngSkills": "Yes",
+"EngLevel": "", "EngCertification": "", "Nickname": "", "Rating": 3.0}], [{"Name": "Athira Manikuttan Pillai Saraladevi
+Amma", "DOB": 32931.0, "Age": 30.0, "Location": "India", "Gender": "Female", "Ext_Platform": "", "Exp": 3.3,
+"Designation": "Bilingual Software Engineer", "Primary Skills": "Python", "Secondary Skills": "", "E_mail":
+"athiramsp@gmail.com", "Per_hr_charge": "", "Unit": "", "Phone": "81-8077921475", "Education": "BTECH", "JpSkills": "",
+"JpLevel": "", "JpCertification": "N-5", "EngSkills": "", "EngLevel": "", "EngCertification": "", "\ufeffNickname": "",
+"Rating": 3.0}]]}, "team3": {"status": true, "data3": [[{"Name": "Aritra", "DOB": "1994/12/30", "Age": "25", "Location":
+"India", "Gender": "Female", "Ext_Platform": "", "Exp": "1", "Designation": "Java developer", "Primary Skills": "Core
+Java", "Secondary Skills": "", "E_mail": "aritrabzr@gmail.com", "Per_hr_charge": 0.0, "Unit": "", "Phone": "8660224110",
+"Education": "BE", "JpSkills": "", "JpLevel": "", "JpCertification": "N-2", "EngSkills": "Yes", "EngLevel": "",
+"EngCertification": "", "Nickname": "", "Rating": 3.0}], [{"Name": "Megha Agarwal", "DOB": 30606.0, "Age": 36.0,
+"Location": "India", "Gender": "Female", "Ext_Platform": "", "Exp": 3.0, "Designation": "Translator/Interpeter",
+"Primary Skills": "Python", "Secondary Skills": "", "E_mail": "Meghaag1983@gmail.com", "Per_hr_charge": "", "Unit": "",
+"Phone": "080-9562-6736", "Education": "BAMS", "JpSkills": "", "JpLevel": "", "JpCertification": "N-2", "EngSkills": "",
+"EngLevel": "", "EngCertification": "", "\ufeffNickname": "", "Rating": 3.0}]]}, "team4": {"status": true, "data4":
+[[{"Name": "Latha Dhanapal", "DOB": 30103.0, "Age": 38.0, "Location": "India", "Gender": "Female", "Ext_Platform": "",
+"Exp": "", "Designation": "Software Developer", "Primary Skills": "C,C++,Java", "Secondary Skills": "", "E_mail":
+"lathadhanapal@gmail.com", "Per_hr_charge": "", "Unit": "", "Phone": "080-3783-0615", "Education": "BE", "JpSkills": "",
+"JpLevel": "", "JpCertification": "", "EngSkills": "", "EngLevel": "", "EngCertification": "", "\ufeffNickname": "",
+"Rating": 3.0}], [{"Name": "Megha Agarwal", "DOB": 30606.0, "Age": 36.0, "Location": "India", "Gender": "Female",
+"Ext_Platform": "", "Exp": 3.0, "Designation": "Translator/Interpeter", "Primary Skills": "Python", "Secondary Skills":
+"", "E_mail": "Meghaag1983@gmail.com", "Per_hr_charge": "", "Unit": "", "Phone": "080-9562-6736", "Education": "BAMS",
+"JpSkills": "", "JpLevel": "", "JpCertification": "N-2", "EngSkills": "", "EngLevel": "", "EngCertification": "",
+"\ufeffNickname": "", "Rating": 3.0}]]}, "team5": {"status": true, "data5": [[{"Name": "Latha Dhanapal", "DOB": 30103.0,
+"Age": 38.0, "Location": "India", "Gender": "Female", "Ext_Platform": "", "Exp": "", "Designation": "Software
+Developer", "Primary Skills": "C,C++,Java", "Secondary Skills": "", "E_mail": "lathadhanapal@gmail.com",
+"Per_hr_charge": "", "Unit": "", "Phone": "080-3783-0615", "Education": "BE", "JpSkills": "", "JpLevel": "",
+"JpCertification": "", "EngSkills": "", "EngLevel": "", "EngCertification": "", "\ufeffNickname": "", "Rating": 3.0},
+{"Name": "S\u00e9amus \u00d3 Connor", "DOB": 28800.0, "Age": 41.0, "Location": "Vietnam", "Gender": "Male",
+"Ext_Platform": "", "Exp": "", "Designation": "Bilingaul Java Developer", "Primary Skills": "Java,Java
+FX,PHP,HTML,css,Mysql", "Secondary Skills": "", "E_mail": "SEAMUS.O.CONNOR@ICLOUD.COM", "Per_hr_charge": "", "Unit": "",
+"Phone": "84 78 3431525", "Education": "Degree/Higher diploma", "JpSkills": "", "JpLevel": "", "JpCertification": "N-3",
+"EngSkills": "", "EngLevel": "", "EngCertification": "", "\ufeffNickname": "", "Rating": 3.0}], [{"Name": "Megha
+Agarwal", "DOB": 30606.0, "Age": 36.0, "Location": "India", "Gender": "Female", "Ext_Platform": "", "Exp": 3.0,
+"Designation": "Translator/Interpeter", "Primary Skills": "Python", "Secondary Skills": "", "E_mail":
+"Meghaag1983@gmail.com", "Per_hr_charge": "", "Unit": "", "Phone": "080-9562-6736", "Education": "BAMS", "JpSkills": "",
+"JpLevel": "", "JpCertification": "N-2", "EngSkills": "", "EngLevel": "", "EngCertification": "", "\ufeffNickname": "",
+"Rating": 3.0}]]}}
+
+
+On server-
+git clone
+
+or
+
+git stash
+git pull origin
